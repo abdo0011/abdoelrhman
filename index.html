@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abdo Elrhman Hegazy — Cybersecurity Student &amp; Penetration Testing Trainee</title>
+<meta name="description" content="Portfolio of Abdo Elrhman Hegazy, a Networks student at October Technological University training as a Penetration Tester with DEPI." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0a0d0d;
+    --bg-raised: #101514;
+    --bg-card: #121816;
+    --line: rgba(148, 214, 181, 0.14);
+    --line-strong: rgba(148, 214, 181, 0.28);
+    --text: #e7efec;
+    --text-dim: #9fb0ab;
+    --text-faint: #6b7a76;
+    --green: #3ee08a;
+    --green-dim: #2a9d68;
+    --green-glow: rgba(62, 224, 138, 0.35);
+    --teal: #35b7b0;
+    --amber: #d9a441;
+    --radius: 10px;
+    --font-display: 'Space Grotesk', 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  ::selection{
+    background:var(--green-glow);
+    color:#06110c;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  section{
+    position:relative;
+    padding:96px 0;
+  }
+
+  @media (max-width:720px){
+    section{padding:64px 0;}
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--green);
+    letter-spacing:0.02em;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+
+  .eyebrow::before{
+    content:"›";
+    color:var(--green-dim);
+  }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:600;
+    margin:0;
+    color:var(--text);
+  }
+
+  h2.section-title{
+    font-size:clamp(26px,3.4vw,38px);
+    margin-bottom:14px;
+    letter-spacing:-0.01em;
+  }
+
+  p.section-lede{
+    color:var(--text-dim);
+    max-width:620px;
+    font-size:15.5px;
+  }
+
+  a{color:inherit;}
+
+  .mono{font-family:var(--font-mono);}
+
+  /* Background */
+  .grid-bg{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:
+      linear-gradient(rgba(148,214,181,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,214,181,0.05) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      black 10%,
+      transparent 75%
+    );
+  }
+
+  /* Navigation */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(10,13,13,0.78);
+    border-bottom:1px solid var(--line);
+  }
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+
+  .brand{
+    font-family:var(--font-mono);
+    font-size:15px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+
+  .brand .dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 8px var(--green-glow);
+  }
+
+  nav.links{
+    display:flex;
+    gap:28px;
+    font-size:14px;
+    color:var(--text-dim);
+  }
+
+  nav.links a{
+    text-decoration:none;
+    transition:color .2s ease;
+  }
+
+  nav.links a:hover{
+    color:var(--text);
+  }
+
+  .nav-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .btn{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:14px;
+    padding:9px 18px;
+    border-radius:7px;
+    border:1px solid var(--line-strong);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    transition:all .2s ease;
+    background:transparent;
+    color:var(--text);
+  }
+
+  .btn:hover{
+    border-color:var(--green);
+    box-shadow:0 0 0 1px var(--green) inset;
+  }
+
+  .btn-primary{
+    background:var(--green);
+    color:#06150d;
+    border-color:var(--green);
+    font-weight:600;
+  }
+
+  .btn-primary:hover{
+    background:#54e89c;
+    box-shadow:0 0 22px var(--green-glow);
+  }
+
+  .hamburger{
+    display:none;
+    background:none;
+    border:1px solid var(--line-strong);
+    border-radius:7px;
+    width:38px;
+    height:38px;
+    align-items:center;
+    justify-content:center;
+    color:var(--text);
+  }
+
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    padding:8px 24px 20px;
+    border-bottom:1px solid var(--line);
+    background:rgba(10,13,13,0.98);
+  }
+
+  .mobile-menu a{
+    padding:12px 0;
+    text-decoration:none;
+    color:var(--text-dim);
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+
+  .mobile-menu.open{
+    display:flex;
+  }
+
+  @media (max-width:860px){
+    nav.links,
+    .nav-actions .btn{
+      display:none;
+    }
+
+    .hamburger{
+      display:flex;
+    }
+  }
+
+  /* Hero */
+  .hero{
+    padding-top:88px;
+    padding-bottom:80px;
+    position:relative;
+    z-index:1;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{
+      grid-template-columns:1fr;
+      gap:40px;
+    }
+
+    .hero-photo-col{
+      order:-1;
+      display:flex;
+      justify-content:center;
+    }
+  }
+
+  .terminal-line{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--green-dim);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .cursor{
+    display:inline-block;
+    width:7px;
+    height:15px;
+    background:var(--green);
+    animation:blink 1.1s steps(1) infinite;
+  }
+
+  @keyframes blink{
+    50%{opacity:0;}
+  }
+
+  .hero h1{
+    font-size:clamp(34px,5vw,54px);
+    line-height:1.08;
+    letter-spacing:-0.02em;
+  }
+
+  .hero .role{
+    font-family:var(--font-mono);
+    color:var(--teal);
+    font-size:clamp(14px,1.6vw,17px);
+    margin-top:16px;
+    display:block;
+  }
+
+  .hero .lede{
+    margin-top:22px;
+    color:var(--text-dim);
+    max-width:520px;
+    font-size:16px;
+  }
+
+  .hero-actions{
+    display:flex;
+    gap:12px;
+    margin-top:32px;
+    flex-wrap:wrap;
+  }
+
+  /* Profile image */
+  .photo-frame{
+    position:relative;
+    width:236px;
+    height:236px;
+    border-radius:50%;
+    padding:6px;
+    background:conic-gradient(
+      from 180deg,
+      rgba(62,224,138,0.5),
+      rgba(53,183,176,0.15) 30%,
+      rgba(62,224,138,0.5) 60%,
+      rgba(53,183,176,0.15) 90%,
+      rgba(62,224,138,0.5)
+    );
+    animation:rotate-frame 10s linear infinite;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .photo-frame{
+      animation:none;
+    }
+
+    .cursor{
+      animation:none;
+      opacity:1;
+    }
+  }
+
+  @keyframes rotate-frame{
+    to{
+      transform:rotate(360deg);
+    }
+  }
+
+  .photo-inner{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:var(--bg-card);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    border:1px solid var(--bg);
+  }
+
+  /*
+    IMPORTANT:
+    Your image must be located at:
+    images/profile.jpg
+  */
+  .photo-inner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* Cards */
+  .card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+
+  .card:hover{
+    border-color:var(--line-strong);
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+
+  @media (max-width:860px){
+    .about-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .focus-list{
+    list-style:none;
+    margin:20px 0 0;
+    padding:0;
+    display:grid;
+    gap:10px;
+  }
+
+  .focus-list li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:14.5px;
+    color:var(--text-dim);
+  }
+
+  .focus-list li::before{
+    content:"▸";
+    color:var(--green);
+    flex-shrink:0;
+    margin-top:1px;
+  }
+
+  /* Education */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+
+  @media (max-width:760px){
+    .two-col{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .status-badge{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    padding:4px 10px;
+    border-radius:20px;
+    border:1px solid var(--green-dim);
+    color:var(--green);
+    display:inline-block;
+    margin-bottom:14px;
+  }
+
+  .status-badge.ongoing{
+    border-color:var(--amber);
+    color:var(--amber);
+  }
+
+  /* Skills */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:14px;
+    margin-top:32px;
+  }
+
+  .skill-item{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    background:var(--bg-card);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+
+  .skill-item .name{
+    font-size:14px;
+  }
+
+  .skill-item .level{
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    padding:3px 8px;
+    border-radius:5px;
+    white-space:nowrap;
+  }
+
+  .level.learning{
+    background:rgba(217,164,65,0.12);
+    color:var(--amber);
+  }
+
+  .level.practicing{
+    background:rgba(53,183,176,0.12);
+    color:var(--teal);
+  }
+
+  .level.comfortable{
+    background:rgba(62,224,138,0.12);
+    color:var(--green);
+  }
+
+  /* Tools */
+  .tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+    gap:14px;
+    margin-top:32px;
+  }
+
+  .tool-chip{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:18px 14px;
+    text-align:center;
+    background:var(--bg-card);
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--text-dim);
+    transition:border-color .2s ease,color .2s ease;
+  }
+
+  .tool-chip:hover{
+    border-color:var(--green-dim);
+    color:var(--text);
+  }
+
+  /* Projects */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-top:32px;
+  }
+
+  @media (max-width:760px){
+    .projects-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .project-card{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .project-tag{
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    color:var(--green);
+    border:1px solid var(--green-dim);
+    align-self:flex-start;
+    padding:3px 9px;
+    border-radius:5px;
+  }
+
+  .project-card h3{
+    font-size:18px;
+  }
+
+  .project-card p{
+    color:var(--text-dim);
+    font-size:14px;
+    margin:0;
+  }
+
+  .project-stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:4px;
+  }
+
+  .project-stack span{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--text-faint);
+    border:1px solid var(--line);
+    padding:2px 7px;
+    border-radius:5px;
+  }
+
+  /* Certifications */
+  .cert-list{
+    display:grid;
+    gap:14px;
+    margin-top:32px;
+  }
+
+  .cert-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:18px 22px;
+    background:var(--bg-card);
+  }
+
+  .cert-row .name{
+    font-size:15px;
+    font-weight:500;
+  }
+
+  .cert-row .issuer{
+    font-size:13px;
+    color:var(--text-faint);
+    margin-top:3px;
+  }
+
+  /* Timeline */
+  .timeline{
+    position:relative;
+    margin-top:44px;
+    padding-left:26px;
+  }
+
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:6px;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:linear-gradient(var(--green-dim),transparent);
+  }
+
+  .timeline-item{
+    position:relative;
+    padding-bottom:34px;
+  }
+
+  .timeline-item:last-child{
+    padding-bottom:0;
+  }
+
+  .timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-26px;
+    top:4px;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--green);
+    box-shadow:0 0 8px var(--green-glow);
+  }
+
+  .timeline-item h4{
+    font-size:15.5px;
+  }
+
+  .timeline-item p{
+    color:var(--text-dim);
+    font-size:13.5px;
+    margin:4px 0 0;
+  }
+
+  /* Write-ups */
+  .writeups-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:32px;
+  }
+
+  @media (max-width:860px){
+    .writeups-grid{
+      grid-template-columns:1fr 1fr;
+    }
+  }
+
+  @media (max-width:560px){
+    .writeups-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .writeup-card{
+    border:1px dashed var(--line-strong);
+    border-radius:8px;
+    padding:18px;
+    background:transparent;
+    color:var(--text-faint);
+    font-size:13.5px;
+  }
+
+  .writeup-card .name{
+    color:var(--text-dim);
+    font-size:14px;
+    margin-bottom:6px;
+  }
+
+  .writeup-card .soon{
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    color:var(--green-dim);
+  }
+
+  /* Contact */
+  .contact-card{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-top:36px;
+  }
+
+  @media (max-width:760px){
+    .contact-card{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .contact-item{
+    padding:28px;
+    border-right:1px solid var(--line);
+    background:var(--bg-card);
+  }
+
+  .contact-item:last-child{
+    border-right:none;
+  }
+
+  @media (max-width:760px){
+    .contact-item{
+      border-right:none;
+      border-bottom:1px solid var(--line);
+    }
+
+    .contact-item:last-child{
+      border-bottom:none;
+    }
+  }
+
+  .contact-item .label{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--text-faint);
+    margin-bottom:10px;
+  }
+
+  .contact-item .value{
+    font-size:16px;
+  }
+
+  .contact-item a.value{
+    text-decoration:none;
+    color:var(--green);
+  }
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0;
+  }
+
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  .footer-inner .name{
+    font-family:var(--font-mono);
+    font-size:14px;
+  }
+
+  .footer-inner .role{
+    color:var(--text-faint);
+    font-size:12.5px;
+    margin-top:3px;
+  }
+
+  /* Reveal */
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .6s ease,transform .6s ease;
+  }
+
+  .reveal.in{
+    opacity:1;
+    transform:none;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{
+      opacity:1;
+      transform:none;
+      transition:none;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+
+    <a href="#hero" class="brand">
+      <span class="dot"></span>
+      abdo@hegazy<span style="color:var(--text-faint)">:~$</span>
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Labs</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#writeups">Write-ups</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a
+        class="btn"
+        href="https://www.linkedin.com/in/abdo-hegazy-034ab62b6"
+        target="_blank"
+        rel="noopener"
+      >
+        LinkedIn
+      </a>
+
+      <a class="btn btn-primary" href="#contact">
+        Contact
+      </a>
+    </div>
+
+    <button
+      class="hamburger"
+      id="hamburger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#tools">Tools</a>
+    <a href="#projects">Labs</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#journey">Journey</a>
+    <a href="#writeups">Write-ups</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="wrap hero-grid">
+
+      <div>
+        <div class="terminal-line">
+          whoami
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+
+        <h1>
+          Abdo Elrhman<br/>
+          Hegazy
+        </h1>
+
+        <span class="role">
+          Cybersecurity Student · Penetration Testing Trainee
+        </span>
+
+        <p class="lede">
+          Networks student at October Technological University,
+          currently training in the Digital Egypt Pioneers Initiative's
+          Penetration Tester track with ODD. I build my practical security
+          skills through networking fundamentals, hands-on labs, and
+          continuous, deliberate practice.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="btn btn-primary"
+            href="https://www.linkedin.com/in/abdo-hegazy-034ab62b6"
+            target="_blank"
+            rel="noopener"
+          >
+            View LinkedIn
+          </a>
+
+          <a class="btn" href="#contact">
+            Get in touch
+          </a>
+
+          <a class="btn" href="#projects">
+            View labs
+          </a>
+        </div>
+      </div>
+
+      <!-- PROFILE IMAGE -->
+      <div class="hero-photo-col">
+        <div class="photo-frame">
+          <div class="photo-inner">
+
+            <!--
+              IMPORTANT:
+              Put your image inside:
+              images/profile.jpg
+            -->
+            <img
+              src="/images/abdohegazy.jpeg"
+              alt="Abdo Elrhman Hegazy"
+            />
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+
+      <div class="reveal">
+        <div class="eyebrow">about</div>
+
+        <h2 class="section-title">
+          Learning security from the network up
+        </h2>
+
+        <p class="section-lede">
+          I'm a Networks student at October Technological University,
+          building a foundation in how systems actually communicate before
+          specializing further. Alongside my studies, I'm training in the
+          DEPI Penetration Tester track, where I practice reconnaissance,
+          enumeration, and vulnerability assessment in controlled lab environments.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <ul class="focus-list">
+          <li>Strong grounding in networking fundamentals and TCP/IP</li>
+          <li>Hands-on practice with reconnaissance and enumeration techniques</li>
+          <li>Applied learning in web application security concepts</li>
+          <li>Regular lab work on platforms like TryHackMe</li>
+          <li>Continuous, structured learning through the DEPI program</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION & TRAINING -->
+  <section id="education">
+    <div class="wrap">
+
+      <div class="eyebrow">background</div>
+
+      <h2 class="section-title">
+        Education &amp; current training
+      </h2>
+
+      <div class="two-col" style="margin-top:32px;">
+
+        <div class="card reveal">
+          <span class="status-badge">
+            Education
+          </span>
+
+          <h3 style="font-size:19px;">
+            October Technological University
+          </h3>
+
+          <p style="color:var(--text-dim);font-size:14px;margin-top:8px;">
+            Department of Networks / Networking
+          </p>
+        </div>
+
+        <div class="card reveal" id="training">
+          <span class="status-badge ongoing">
+            Currently training
+          </span>
+
+          <h3 style="font-size:19px;">
+            Digital Egypt Pioneers Initiative (DEPI)
+          </h3>
+
+          <p style="color:var(--text-dim);font-size:14px;margin-top:8px;">
+            Penetration Tester track, delivered through training organization ODD.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+
+      <div class="eyebrow">technical skills</div>
+
+      <h2 class="section-title">
+        Where I'm building strength
+      </h2>
+
+      <p class="section-lede">
+        Skill levels here reflect an active learning journey,
+        not professional-grade expertise.
+      </p>
+
+      <div class="skills-grid">
+
+        <div class="skill-item">
+          <span class="name">TCP/IP</span>
+          <span class="level practicing">Practicing</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Networking Fundamentals</span>
+          <span class="level comfortable">Comfortable</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Network Enumeration</span>
+          <span class="level practicing">Practicing</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Reconnaissance</span>
+          <span class="level practicing">Practicing</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Vulnerability Assessment</span>
+          <span class="level learning">Learning</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Nmap</span>
+          <span class="level practicing">Practicing</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Wireshark</span>
+          <span class="level practicing">Practicing</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Burp Suite</span>
+          <span class="level learning">Learning</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Metasploit</span>
+          <span class="level learning">Learning</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">HTTP</span>
+          <span class="level comfortable">Comfortable</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">SQL Injection</span>
+          <span class="level learning">Learning</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">SQLmap</span>
+          <span class="level learning">Learning</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">OWASP Concepts</span>
+          <span class="level learning">Learning</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Linux</span>
+          <span class="level practicing">Practicing</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Kali Linux</span>
+          <span class="level practicing">Practicing</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Windows</span>
+          <span class="level comfortable">Comfortable</span>
+        </div>
+
+        <div class="skill-item">
+          <span class="name">Virtual Machines</span>
+          <span class="level comfortable">Comfortable</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <div class="wrap">
+
+      <div class="eyebrow">toolkit</div>
+
+      <h2 class="section-title">
+        Tools I work with
+      </h2>
+
+      <div class="tools-grid">
+
+        <div class="tool-chip">Nmap</div>
+        <div class="tool-chip">Wireshark</div>
+        <div class="tool-chip">Burp Suite</div>
+        <div class="tool-chip">Metasploit</div>
+        <div class="tool-chip">SQLmap</div>
+        <div class="tool-chip">Linux</div>
+        <div class="tool-chip">Kali Linux</div>
+        <div class="tool-chip">TryHackMe</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS / LABS -->
+  <section id="projects">
+    <div class="wrap">
+
+      <div class="eyebrow">labs &amp; practice</div>
+
+      <h2 class="section-title">
+        Projects &amp; lab work
+      </h2>
+
+      <p class="section-lede">
+        Practice work from controlled lab environments and structured training —
+        not unauthorized testing or client engagements.
+      </p>
+
+      <div class="projects-grid">
+
+        <div class="card project-card reveal">
+          <span class="project-tag">Lab</span>
+
+          <h3>
+            Network Enumeration Lab
+          </h3>
+
+          <p>
+            Practical network reconnaissance and enumeration using Nmap
+            and related networking techniques.
+          </p>
+
+          <div class="project-stack">
+            <span>Nmap</span>
+            <span>TCP/IP</span>
+            <span>Enumeration</span>
+          </div>
+        </div>
+
+        <div class="card project-card reveal">
+          <span class="project-tag">Lab</span>
+
+          <h3>
+            Web Application Security Lab
+          </h3>
+
+          <p>
+            Hands-on practice with HTTP, Burp Suite, web reconnaissance,
+            and common web security concepts.
+          </p>
+
+          <div class="project-stack">
+            <span>Burp Suite</span>
+            <span>HTTP</span>
+            <span>Web Recon</span>
+          </div>
+        </div>
+
+        <div class="card project-card reveal">
+          <span class="project-tag">Practice</span>
+
+          <h3>
+            SQL Injection Practice
+          </h3>
+
+          <p>
+            Educational lab work focused on understanding SQL Injection
+            and using SQLmap in controlled environments.
+          </p>
+
+          <div class="project-stack">
+            <span>SQLmap</span>
+            <span>SQL Injection</span>
+          </div>
+        </div>
+
+        <div class="card project-card reveal">
+          <span class="project-tag">Ongoing</span>
+
+          <h3>
+            TryHackMe Security Labs
+          </h3>
+
+          <p>
+            Hands-on cybersecurity learning through controlled labs
+            and practical security challenges.
+          </p>
+
+          <div class="project-stack">
+            <span>TryHackMe</span>
+            <span>Linux</span>
+            <span>Kali Linux</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="wrap">
+
+      <div class="eyebrow">
+        certifications &amp; learning
+      </div>
+
+      <h2 class="section-title">
+        Certifications &amp; learning status
+      </h2>
+
+      <div class="cert-list">
+
+        <div class="cert-row">
+          <div>
+            <div class="name">Network+</div>
+            <div class="issuer">Infosec / Coursera</div>
+          </div>
+
+          <span class="status-badge">
+            Completed
+          </span>
+        </div>
+
+        <div class="cert-row">
+          <div>
+            <div class="name">
+              Digital Egypt Pioneers Initiative — Penetration Tester
+            </div>
+
+            <div class="issuer">
+              DEPI · Training organization: ODD
+            </div>
+          </div>
+
+          <span class="status-badge ongoing">
+            Currently training
+          </span>
+        </div>
+
+        <div class="cert-row">
+          <div>
+            <div class="name">
+              TryHackMe
+            </div>
+
+            <div class="issuer">
+              Hands-on security practice
+            </div>
+          </div>
+
+          <span class="status-badge ongoing">
+            Ongoing learning
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARNING JOURNEY -->
+  <section id="journey">
+    <div class="wrap">
+
+      <div class="eyebrow">
+        learning journey
+      </div>
+
+      <h2 class="section-title">
+        How I'm progressing
+      </h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h4>Networking</h4>
+          <p>
+            Building a solid foundation in how networks and protocols work.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Linux &amp; Kali</h4>
+          <p>
+            Getting comfortable operating in Linux and Kali Linux environments.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Network Security</h4>
+          <p>
+            Learning how networks are secured and where weaknesses appear.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Reconnaissance &amp; Enumeration</h4>
+          <p>
+            Practicing information gathering with tools like Nmap and Wireshark.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Web Security</h4>
+          <p>
+            Exploring web application concepts with Burp Suite and HTTP fundamentals.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Penetration Testing</h4>
+          <p>
+            Applying skills in the DEPI Penetration Tester track.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Continuous Practice</h4>
+          <p>
+            Reinforcing everything through ongoing labs on TryHackMe and beyond.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITE-UPS -->
+  <section id="writeups">
+    <div class="wrap">
+
+      <div class="eyebrow">
+        write-ups &amp; knowledge
+      </div>
+
+      <h2 class="section-title">
+        Notes &amp; write-ups
+      </h2>
+
+      <p class="section-lede">
+        A space for technical write-ups as I document what I learn.
+        Add a card here for each new post.
+      </p>
+
+      <div class="writeups-grid">
+
+        <div class="writeup-card">
+          <div class="name">Nmap Basics</div>
+          <div class="soon">Coming soon</div>
+        </div>
+
+        <div class="writeup-card">
+          <div class="name">Network Enumeration</div>
+          <div class="soon">Coming soon</div>
+        </div>
+
+        <div class="writeup-card">
+          <div class="name">SQL Injection Concepts</div>
+          <div class="soon">Coming soon</div>
+        </div>
+
+        <div class="writeup-card">
+          <div class="name">Burp Suite Basics</div>
+          <div class="soon">Coming soon</div>
+        </div>
+
+        <div class="writeup-card">
+          <div class="name">Linux for Penetration Testing</div>
+          <div class="soon">Coming soon</div>
+        </div>
+
+        <div class="writeup-card">
+          <div class="name">OWASP Concepts</div>
+          <div class="soon">Coming soon</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+
+      <div class="eyebrow">contact</div>
+
+      <h2 class="section-title">
+        Let's connect
+      </h2>
+
+      <p class="section-lede">
+        Open to conversations about cybersecurity, networking,
+        and penetration testing training.
+      </p>
+
+      <div class="contact-card">
+
+        <div class="contact-item">
+          <div class="label">NAME</div>
+          <div class="value">
+            Abdo Elrhman Hegazy
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="label">PHONE</div>
+          <div class="value">
+            01210736292
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="label">LINKEDIN</div>
+
+          <a
+            class="value"
+            href="https://www.linkedin.com/in/abdo-hegazy-034ab62b6"
+            target="_blank"
+            rel="noopener"
+          >
+            abdo-hegazy-034ab62b6 ↗
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+
+    <div>
+      <div class="name mono">
+        Abdo Elrhman Hegazy
+      </div>
+
+      <div class="role">
+        Cybersecurity Student · Penetration Testing Trainee
+      </div>
+    </div>
+
+    <a
+      class="btn"
+      href="https://www.linkedin.com/in/abdo-hegazy-034ab62b6"
+      target="_blank"
+      rel="noopener"
+    >
+      LinkedIn ↗
+    </a>
+
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
